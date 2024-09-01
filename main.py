@@ -1,3 +1,5 @@
+from modules.Dev import Dev
+
 class Person():
     def __init__(self,name,id):
         n,s = name.split(' ')
@@ -20,3 +22,6 @@ class Student(Person):
 
 s1 = Student('Nuttaphon Popardit',1,2)
 print(s1)
+
+d1 = Dev('Software Engineer')
+print(d1)
