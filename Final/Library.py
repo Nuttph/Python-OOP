@@ -13,7 +13,8 @@ class Library:
             print('same book!')
     def borrow(self,name,nbook1,nbook2=None,nbook3=None,nbook4=None,nbook5=None):
         print(name)
-        list_of_borrow = [nbook1,nbook2,nbook3,nbook4,nbook5]
+        check = [nbook1,nbook2,nbook3,nbook4,nbook5]
+        list_of_borrow = list(filter(lambda x :x!=None,check))
         print(list_of_borrow)
 Library = Library('anime')
 Library.add('Book')
