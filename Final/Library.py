@@ -16,9 +16,12 @@ class Library:
         check = [nbook1,nbook2,nbook3,nbook4,nbook5]
         list_of_borrow = list(filter(lambda x :x!=None,check))
         print(list_of_borrow)
-        
+        borrow.append({"name":name,"book_name":list_of_borrow})
+
 Library = Library('anime')
 Library.add('Book')
 Library.add('BooA')
 Library.borrow('fname','a','b')
+Library.borrow('lname','c','d')
 print(book)
+print(borrow)
