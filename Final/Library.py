@@ -1,27 +1,42 @@
 book = []
-borrow = []
+borrow = [
+    {
+        'name':'nut',
+        'borrow':['1','2']
+    },
+    ]
+mockdata = ['nut','a']
 class Library:
+    global borrow
     def __init__(self,nbook):
         if(nbook not in book):
             book.append(nbook)
         else:
             print('same book!')
+            
     def add(self,nbook):
-        if(nbook not in book):
-            book.append(nbook)
+        for i in nbook:
+            if(i not in book):
+                book.extend(nbook)
+            else:
+                print('same book!')
+    
+    def borrow_book(self,name,nbook):
+        obj_name = list(filter(lambda x:x['name']==name,borrow))
+        print(f'obj = {obj_name}')
+        print(f'borrow = {len(obj_name[0]['borrow'])}')
+        if(len(obj_name[0]['borrow']) >= 5):
+            print('can not borrow!!')
+        elif(len(nbook)+len(obj_name[0]['borrow']) >= 5):
+            print('can not borrow')
         else:
-            print('same book!')
-    def borrow(self,name,nbook1,nbook2=None,nbook3=None,nbook4=None,nbook5=None):
-        print(name)
-        check = [nbook1,nbook2,nbook3,nbook4,nbook5]
-        list_of_borrow = list(filter(lambda x :x!=None,check))
-        print(list_of_borrow)
-        borrow.append({"name":name,"book_name":list_of_borrow})
+            print('borrow')
+            obj_name[0]['borrow'].extend(nbook)
 
-Library = Library('anime')
-Library.add('Book')
-Library.add('BooA')
-Library.borrow('fname','a','b')
-Library.borrow('lname','c','d')
-print(book)
+library = Library('b1')
+library.add(['b2','b3'])
+library.add(['b2','b3'])
+library.borrow_book('nut',['b3','b4'])
+library.borrow_book('nut',['b5','b6'])
 print(borrow)
+# print("hello world")
